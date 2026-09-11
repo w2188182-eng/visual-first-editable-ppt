@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual-First Editable PPT"
+  short_description: "Design visual-first slides, then rebuild editable PPTX"
+  default_prompt: "Use $visual-first-editable-ppt to turn my source material into approved slide visual drafts first, then rebuild the approved design as an editable PowerPoint and run render-and-compare QA."
