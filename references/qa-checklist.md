@@ -14,7 +14,8 @@ Use this only during the final reconstruction and comparison stage.
 - No accidental overflow, clipping, overlaps, or text outside cards.
 
 ## Typography
-- Unless explicitly overridden, all editable Chinese, English, numbers, and punctuation use Microsoft YaHei (微软雅黑), including table/chart text.
+- Fonts follow the user's latest choices, including later font changes and language/slide/title/body scope. The default must never override an explicit choice.
+- Only text without a user font choice or requested template-font preservation defaults to Microsoft YaHei (微软雅黑), including English, numbers, punctuation, and table/chart text.
 - Check both Latin and East Asian font settings and inline runs; no unintended theme-font fallback.
 - Title hierarchy is consistent.
 - Body text is readable at presentation scale.
