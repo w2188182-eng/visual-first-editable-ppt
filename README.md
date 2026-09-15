@@ -6,6 +6,13 @@ A reusable skill for the workflow:
 
 The skill is intentionally designed for users who find that image-generated slide designs look better than PPT files generated directly.
 
+## 默认字体与文本框规则
+
+- 默认所有可编辑文字使用微软雅黑（Microsoft YaHei），包括中文、英文、数字和标点。用户明确指定其他字体或要求严格保留模板字体时除外。
+- 同一段落或同一内容块使用一个文本框，通过框内换行、段落和列表格式排版，不按每一行或每个列表项单独建框。
+- 不同内容可以分别建框，例如小标题和正文、不同卡片或独立图示标签。
+- 同一段中的红字、加粗、英文缩写使用框内局部格式，不拆框。修改文字或调整框宽时，整个内容块应能一起重排。
+
 ## Files
 
 - `SKILL.md` — main reusable workflow.
