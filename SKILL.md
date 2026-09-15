@@ -97,9 +97,18 @@ Treat the approved visual images as design references, not as slide backgrounds.
 
 Reconstruct the slide using native objects wherever editing is likely to matter.
 
-### Default font
+### Font selection: user choice first, Microsoft YaHei by default
 
-Unless the user explicitly specifies another font or requires exact preservation of a template's fonts, use **Microsoft YaHei (微软雅黑)** for all editable text, including Chinese, English, numbers, and punctuation. Apply it to titles, body text, labels, table cells, chart text, and footers. Set both Latin and East Asian font settings, including theme defaults and text runs, so English does not fall back to another font. If the font is unavailable for rendering, disclose that limitation instead of silently substituting it or claiming an exact font match.
+Font choice is configurable. Apply this priority order:
+1. The user's latest explicit font instruction takes precedence, including a later request to change a previously selected font. Apply it to the specified scope (the whole deck, a slide, titles, body text, Chinese, or English). Do not reject a requested font change or force Microsoft YaHei because it is the default.
+2. For text outside that scope, preserve template fonts only when the user requests font preservation.
+3. Use **Microsoft YaHei (微软雅黑)** for remaining text with no font instruction, including Chinese, English, numbers, and punctuation.
+
+Apply the resolved font choices to titles, body text, labels, table cells, chart text, and footers as appropriate. Set Latin and East Asian font settings, theme defaults, and inline runs to respect the chosen language/scope; do not overwrite an explicitly chosen English font with Microsoft YaHei.
+
+Examples: with no font specified, use Microsoft YaHei throughout. If the user says “全部改为宋体”, use SimSun throughout. If they say “中文微软雅黑，英文 Arial”, use that language-specific combination. If they later say “标题改成黑体”, change only the titles and retain the other font choices.
+
+If a selected font is unavailable for rendering, explain the limitation and offer an available alternative. Use an alternative when the user chooses it or has authorized substitution; never silently replace their choice. This availability check does not prohibit the user from choosing or changing fonts.
 
 ### Text boxes follow semantic content blocks
 
@@ -155,7 +164,7 @@ After generating the editable `.pptx`, render every slide back to an image and c
 Check:
 - slide aspect ratio;
 - title and body placement;
-- Microsoft YaHei for Chinese and Latin text unless explicitly overridden, plus font size and line breaks;
+- fonts match the user's latest choices and their scope; Microsoft YaHei applies only where no font choice or requested template preservation applies; check font size and line breaks;
 - one text box per semantic paragraph/content block, with inline emphasis retained as runs;
 - card width and height;
 - object alignment;
