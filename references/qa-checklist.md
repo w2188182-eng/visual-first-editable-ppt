@@ -14,6 +14,8 @@ Use this only during the final reconstruction and comparison stage.
 - No accidental overflow, clipping, overlaps, or text outside cards.
 
 ## Typography
+- Unless explicitly overridden, all editable Chinese, English, numbers, and punctuation use Microsoft YaHei (微软雅黑), including table/chart text.
+- Check both Latin and East Asian font settings and inline runs; no unintended theme-font fallback.
 - Title hierarchy is consistent.
 - Body text is readable at presentation scale.
 - Line breaks visually match the approved design as closely as practical.
@@ -21,6 +23,10 @@ Use this only during the final reconstruction and comparison stage.
 
 ## Editability
 - Editable text remains text.
+- Each paragraph or coherent content block, including a related list, is one text box rather than separate boxes per line or list item.
+- Subheadings and body text may be separate boxes; distinct cards, labels, diagram nodes, and native table cells stay independent.
+- Color/bold emphasis and English abbreviations are inline runs, not separate text boxes.
+- Inspect object structure and try editing/resizing a representative multi-line block: its text should reflow together. Grouped line boxes do not pass this check.
 - Data tables are native tables when practical.
 - Charts are native charts when practical.
 - Cards, separators, arrows, and process boxes are shapes.
