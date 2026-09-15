@@ -1,6 +1,6 @@
 ---
 name: visual-first-editable-ppt
-description: Create polished PowerPoint decks with a visual-first workflow: analyze source material, plan slide structure, generate 16:9 slide visual drafts for approval, then rebuild the approved design as an editable PPTX with native text, tables, charts, shapes, and hybrid image assets. Use whenever the user wants a PPT that must be both visually strong and editable, especially when direct PPT generation looks worse than image-based slide mockups.
+description: "Create polished PowerPoint decks with a visual-first workflow: analyze source material, plan slide structure, generate 16:9 slide visual drafts for approval, then rebuild the approved design as an editable PPTX with native text, tables, charts, shapes, and hybrid image assets. Use whenever the user wants a PPT that must be both visually strong and editable, especially when direct PPT generation looks worse than image-based slide mockups."
 ---
 
 # Visual-First Editable PPT
@@ -97,6 +97,20 @@ Treat the approved visual images as design references, not as slide backgrounds.
 
 Reconstruct the slide using native objects wherever editing is likely to matter.
 
+### Default font
+
+Unless the user explicitly specifies another font or requires exact preservation of a template's fonts, use **Microsoft YaHei (微软雅黑)** for all editable text, including Chinese, English, numbers, and punctuation. Apply it to titles, body text, labels, table cells, chart text, and footers. Set both Latin and East Asian font settings, including theme defaults and text runs, so English does not fall back to another font. If the font is unavailable for rendering, disclose that limitation instead of silently substituting it or claiming an exact font match.
+
+### Text boxes follow semantic content blocks
+
+- Keep each paragraph or coherent content block in one text box, with wrapping, line breaks, paragraph spacing, and list formatting inside that box. A multi-line paragraph or a related numbered/bulleted list must not become one text box per visual line or list item.
+- Separate boxes are appropriate for distinct content blocks, such as a paragraph's subheading and its body, different cards, independent labels, or separately positioned diagram nodes. Native table cells remain separate cells.
+- Keep inline emphasis, red keywords, bold text, English abbreviations, and numbers as formatted runs within the same text box. A style change alone is not a reason to split a content block.
+- For screenshot reconstruction, use OCR lines only to recover reading order; merge lines into semantic paragraphs or lists before creating text boxes. Do not create text boxes by looping over screenshot lines, and do not treat grouping many line boxes as equivalent to one editable text box.
+- Preserve layout through box width, internal margins, line spacing, and paragraph spacing. Do not split a paragraph into line boxes just to match pixel positions. Editing a sentence or resizing its box should reflow the whole content block.
+
+Example: a subheading “监测要求” and three related requirements use two text boxes: one for the subheading and one containing all three requirements as native list paragraphs. A wrapped requirement stays in that second box; “CEMS” and highlighted words stay as inline runs.
+
 ### Native editable objects
 
 Must normally be editable:
@@ -136,12 +150,13 @@ Use the draft as an underlay or measurement reference during reconstruction if u
 
 ## 7. Render-and-compare QA
 
-After generating the editable `.pptx`, render every slide back to an image and compare it with the approved visual draft.
+After generating the editable `.pptx`, render every slide back to an image and compare it with the approved visual draft. Use [the QA checklist](references/qa-checklist.md) to inspect typography and content-block editability as well as visual appearance.
 
 Check:
 - slide aspect ratio;
 - title and body placement;
-- font size and line breaks;
+- Microsoft YaHei for Chinese and Latin text unless explicitly overridden, plus font size and line breaks;
+- one text box per semantic paragraph/content block, with inline emphasis retained as runs;
 - card width and height;
 - object alignment;
 - spacing and margins;
